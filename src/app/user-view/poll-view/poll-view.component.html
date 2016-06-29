@@ -1,7 +1,0 @@
-<div *ngFor="let poll of polls | async" [hidden]=isCurrent(poll.$key)>
-  <p>{{poll.name}}</p>
-  <div>
-    <button md-raised-button (click)="submitVote(i, option, poll.total)" color="primary" *ngFor="let option of poll.options; let i = index">{{option.name}}</button>
-  </div>
-</div>
-<br>

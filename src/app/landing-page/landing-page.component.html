@@ -1,3 +1,18 @@
-<md-card class="main">
-  <button md-raised-button *ngFor="let user of users | async" color="accent" (click)=goToUser(user.$key)>{{user.name}}</button>
+<md-card class="main-view">
+   <md-card-title><md-input dividerColor="accent" bindon-ngModel="poll.name" placeholder="New Poll"></md-input></md-card-title>   
+   <md-card-subtitle>By <md-input dividerColor="accent" bindon-ngModel="poll.author" placeholder="Name"></md-input></md-card-subtitle>
+   <md-card-content>
+    <div class="option-view">
+      <div class="option" *ngFor="let option of poll.options; let i = index">
+        <md-input dividerColor="accent" placeholder="Option {{i+1}}" bindon-ngModel="option.value" (keydown)="beforeCheck(option)" (keyup)="afterCheck(option)"></md-input>
+        <button md-button [disabled]="isFirst(i)" (click)="removeOption(option)" color="warn">
+          <!--<i class="material-icons">delete</i>-->
+          X
+        </button>
+      </div>
+    </div>
+   </md-card-content>
+   <md-card-actions>
+        <button md-button color="primary" (click)="submitPoll()">CREATE</button>
+   </md-card-actions>
 </md-card>

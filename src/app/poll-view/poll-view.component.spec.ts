@@ -12,9 +12,9 @@ import {
 
 import { PollViewComponent } from './poll-view.component';
 
-// describe('Component: PollView', () => {
-//   it('should create an instance', () => {
-//     let component = new PollViewComponent();
-//     expect(component).toBeTruthy();
-//   });
-// });
+describe('Component: PollView', () => {
+  it('should create an instance', () => {
+    let component = new PollViewComponent();
+    expect(component).toBeTruthy();
+  });
+});

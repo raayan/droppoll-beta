@@ -86,6 +86,8 @@ const barrels: string[] = [
   'app/user-view',
   'app/landing-page',
   'app/poll-results',
+  'app/poll-vote-view',
+  'app/poll-result-view',
   /** @cli-barrel */
 ];
 
