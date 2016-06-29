@@ -1,0 +1,16 @@
+<md-card class="main">
+  <md-card-header>{{(userName | async)?.name}}'s Polls</md-card-header>
+  <button *ngFor="let poll of polls | async" md-raised-button class="poll-button" color="primary" (click)="goToPoll(['/user/' + user + '/poll',poll.$key])">{{poll.name}} ({{poll.total}} votes)</button>
+</md-card>
+<md-card class="main">
+  <md-input dividerColor="accent" class="new-poll-input" placeholder="Title" [(ngModel)]="newpoll.title"></md-input>
+  <md-input dividerColor="accent" class="new-poll-input" placeholder="Option {{i+1}}" *ngFor="let option of options; let i = index" [(ngModel)]="option.name"></md-input>
+  <div class="new-poll-full">
+    <button md-raised-button class="new-poll-add" color="accent" (click)="addOption()">Add Option</button>
+    <button md-raised-button class="new-poll-submit" color="warn" (click)="createPoll()">Create Poll</button>
+  </div>
+  <br><br>
+</md-card>
+<md-card class="main">
+  <router-outlet></router-outlet>
+</md-card>

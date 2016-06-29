@@ -1,0 +1,9 @@
+<div *ngFor="let poll of polls | async" [hidden]=isCurrent(poll.$key)>
+  <p>{{poll.name}}</p>
+  <div *ngFor="let option of poll.options; let i = index">
+    <p>{{option.name}}: {{option.score}} ({{(option.score/poll.total)*100}}%)</p>
+    <md-progress-bar color="accent" style="color: #ED6831" value="{{(option.score/poll.total)*100}}"></md-progress-bar>
+  </div>
+  <p>Total Votes: {{poll.total}}</p>
+</div>
+<br>
