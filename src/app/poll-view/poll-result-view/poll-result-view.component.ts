@@ -34,9 +34,9 @@ export class PollResultViewComponent implements OnInit {
       if (snap.options !== undefined) {
         for (let obj of snap.options) {
           this.total += obj.score;
-          console.log(obj.score);
+          // console.log(obj.score);
         }
-        console.log(this.total);
+        // console.log(this.total);
       }
     });
   }

@@ -29,7 +29,7 @@ export class PollVoteViewComponent implements OnInit {
   }
   toResult() {
     if (document.cookie.indexOf(this.pollID) >= 0){
-      console.log("You've voted already");
+      // console.log("You've voted already");
     } else {
       document.cookie += " " + this.pollID;
     }
