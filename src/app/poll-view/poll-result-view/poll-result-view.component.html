@@ -6,7 +6,7 @@
    <md-card-content>
     <div class="option-view">
       <div class="option" *ngFor="let option of (poll | async)?.options; let i = index">
-        {{option.value}} {{option.score}} Votes ({{option.score/total*100}}%)
+        {{option.value}} {{option.score}} Votes ({{option.score/total*100 | number:'1.0-2'}}%)
         <md-progress-bar color="accent" value="{{option.score/total*100}}"></md-progress-bar>
       </div>
     </div>

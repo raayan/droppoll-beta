@@ -21,11 +21,17 @@ import { MdIcon, MD_ICON_DIRECTIVES} from '@angular2-material/icon';
 export class PollVoteViewComponent implements OnInit {
   poll: FirebaseObjectObservable<any>;
   pollID: string;
+  voted: boolean;
   constructor(private fbds: FirebaseDataService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
     this.pollID = this.route.snapshot._lastUrlSegment.path;
     this.poll = this.fbds.getPoll(this.pollID)
+    if (document.cookie.indexOf(this.pollID) >= 0) {
+      this.voted = true;
+    } else {
+      this.voted = false;
+    }
   }
   toResult() {
     if (document.cookie.indexOf(this.pollID) >= 0){
