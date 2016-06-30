@@ -16,7 +16,7 @@ import {} from '@angular2-material/';
   directives: [
     MdCard, MdCardHeader, MdCardTitleGroup, MD_CARD_DIRECTIVES,
     MdButton, MD_BUTTON_DIRECTIVES,
-    MdInput,MdPlaceholder,MD_INPUT_DIRECTIVES
+    MdInput,MdPlaceholder,MD_INPUT_DIRECTIVES,
     ]
 })
 export class LandingPageComponent implements OnInit {
