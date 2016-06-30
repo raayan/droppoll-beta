@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MdCard, MdCardTitleGroup, MdCardHeader, MD_CARD_DIRECTIVES} from '@angular2-material/card';
 import { MdButton, MD_BUTTON_DIRECTIVES} from '@angular2-material/button';
 import { MdInput,MdPlaceholder,MD_INPUT_DIRECTIVES} from '@angular2-material/input';
 import { MdIcon, MD_ICON_DIRECTIVES} from '@angular2-material/icon';
 import { FirebaseDataService } from '../firebase-data.service';
+import { FirebaseListObservable } from 'angularfire2';
 import {} from '@angular2-material/';
 
 @Component({
@@ -20,7 +22,8 @@ import {} from '@angular2-material/';
 export class LandingPageComponent implements OnInit {
   poll: any;
   options: any[];
-  constructor(private fbds: FirebaseDataService) {}
+  polls: FirebaseListObservable<any[]>;
+  constructor(private fbds: FirebaseDataService, private router: Router) {}
 
   ngOnInit() {
     this.initPoll();
@@ -29,8 +32,10 @@ export class LandingPageComponent implements OnInit {
     this.poll = {
       name: "",
       author: "",
+      total: 0,
       options: [{value: "", score: 0}]
     };
+    this.polls = this.fbds.getPolls();
   }
   checkPoll() {
     var tmp_options = []
@@ -89,16 +94,21 @@ export class LandingPageComponent implements OnInit {
   }
   submitPoll() {
     if (this.poll.name === "") {
-
+      console.log("Enter a title")
     } else if (this.poll.author === "") {
-
+      console.log("Enter a your name")
     } else if (this.checkPoll().length === 0) {
-
+      console.log("Enter some options")
     } else {
+      // Success
       this.cleanPoll();
-      this.fbds.createPoll(this.poll);
+      var key = this.fbds.createPoll(this.poll);
       // Reset all fields
-      this.initPoll();    
+      this.initPoll();
+      this.router.navigate(['/', key])
     }
+  }
+  goToPoll(id: string) {
+    this.router.navigate(['/', id])
   }
 }

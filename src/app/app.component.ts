@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
+import { ROUTER_DIRECTIVES, Router } from '@angular/router';
 import { HTTP_PROVIDERS } from '@angular/http';
 import { MdIcon, MdIconRegistry } from '@angular2-material/icon';
 import { MdButton } from '@angular2-material/button';
@@ -24,9 +24,9 @@ export class AppComponent {
   title = 'DropPoll';
   sub_title = "A stylable, real-time poll"
 
-  constructor(private fbds: FirebaseDataService, private af: AngularFire) {}
+  constructor(private router: Router, private fbds: FirebaseDataService, private af: AngularFire) {}
 
-  clickLogin() {
-    
+  goHome() {
+    this.router.navigate(['/']);
   }
 }

@@ -1,3 +1,15 @@
-<p>
-  poll-result-view works!
-</p>
+<md-card class="main-view">
+   <md-card-title>
+     {{ (poll | async)?.name }}
+   </md-card-title>   
+   <md-card-subtitle>By {{(poll | async)?.author}}</md-card-subtitle>
+   <md-card-content>
+    <div class="option-view">
+      <div class="option" *ngFor="let option of (poll | async)?.options; let i = index">
+        {{option.value}} {{option.score}} Votes ({{option.score/total*100}}%)
+        <md-progress-bar color="accent" value="{{option.score/total*100}}"></md-progress-bar>
+      </div>
+    </div>
+   </md-card-content>
+   <button md-raised-button color="warn" (click)="func()">CLICK</button>
+</md-card>

@@ -12,9 +12,9 @@ import {
 
 import { LandingPageComponent } from './landing-page.component';
 
-describe('Component: LandingPage', () => {
-  it('should create an instance', () => {
-    let component = new LandingPageComponent();
-    expect(component).toBeTruthy();
-  });
-});
+// describe('Component: LandingPage', () => {
+//   it('should create an instance', () => {
+//     let component = new LandingPageComponent();
+//     expect(component).toBeTruthy();
+//   });
+// });
