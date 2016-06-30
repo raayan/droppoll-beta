@@ -9,3 +9,7 @@
 .full-width {
   width: 100%;
 }
+
+.icon {
+  cursor: pointer;
+}
