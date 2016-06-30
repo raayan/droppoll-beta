@@ -9,7 +9,7 @@
 const map: any = {
   'firebase': 'vendor/firebase/firebase.js',
   'angularfire2': 'vendor/angularfire2',
-  '@angular2-material': 'vendor/@angular2-material'
+  '@angular2-material': 'vendor/@angular2-material',
 };
 
 /** User packages configuration. */
@@ -17,7 +17,7 @@ const packages: any = {
   angularfire2: {
     defaultExtension: 'js',
     main: 'angularfire2.js'
-  }
+  },
 };
 
 // material design packages
@@ -89,6 +89,7 @@ const barrels: string[] = [
   'app/poll-vote-view',
   'app/poll-result-view',
   /** @cli-barrel */
+
 ];
 
 const cliSystemConfigPackages: any = {};

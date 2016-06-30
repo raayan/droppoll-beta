@@ -7,6 +7,7 @@ import { MdButton, MD_BUTTON_DIRECTIVES} from '@angular2-material/button';
 import { MdInput,MdPlaceholder,MD_INPUT_DIRECTIVES} from '@angular2-material/input';
 import { MdIcon, MD_ICON_DIRECTIVES} from '@angular2-material/icon';
 import { MdProgressBar, MD_PROGRESS_BAR_DIRECTIVES } from '@angular2-material/progress-bar';
+import {CHART_DIRECTIVES} from 'ng2-charts/ng2-charts';
 
 @Component({
   moduleId: module.id,
