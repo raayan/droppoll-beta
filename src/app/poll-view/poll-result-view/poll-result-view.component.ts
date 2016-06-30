@@ -32,6 +32,7 @@ export class PollResultViewComponent implements OnInit {
     this.poll = this.fbds.getPoll(this.pollID)
     this.poll.subscribe((snap: any) => {
       if (snap.options !== undefined) {
+        this.total = 0;
         for (let obj of snap.options) {
           this.total += obj.score;
           // console.log(obj.score);

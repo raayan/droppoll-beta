@@ -21,7 +21,7 @@
    <md-card-title>Recent Polls</md-card-title>   
    <md-card-content>
      <span class="poll">
-      <button *ngFor="let poll of polls | async" md-raised-button color="primary" (click)="goToPoll(poll.$key)">{{poll.name}}</button>
+      <button *ngFor="let poll of polls | async; let i = index" md-raised-button color="primary" (click)="goToPoll(poll.$key)">{{poll.name}} ({{totals[i]}} Votes)</button>
      </span>
    </md-card-content>
 </md-card>

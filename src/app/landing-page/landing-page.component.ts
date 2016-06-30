@@ -23,10 +23,23 @@ export class LandingPageComponent implements OnInit {
   poll: any;
   options: any[];
   polls: FirebaseListObservable<any[]>;
+  totals: number[];
   constructor(private fbds: FirebaseDataService, private router: Router) {}
 
   ngOnInit() {
     this.initPoll();
+    this.polls.forEach((obj: any) => {
+      var count = 0;
+      this.totals = []
+      for (let ob of obj) {
+        ob.total = 0
+        for (let opt of ob.options) {
+          ob.total += opt.score;
+        }
+        this.totals[count] = ob.total;
+        count += 1;
+      }
+    });
   }
   initPoll() {
     this.poll = {
