@@ -12,19 +12,3 @@
     </div>
    </md-card-content>
 </md-card>
-
-<md-card class="main-view">
-  <md-card-title>
-    Details
-  </md-card-title>  
-  <md-card-content>
-    <div class="option-view">
-      <base-chart class="chart"
-                      [data]="doughnutChartData"
-                      [labels]="doughnutChartLabels"
-                      [chartType]="doughnutChartType"
-                      (chartHover)="chartHovered($event)"
-                      (chartClick)="chartClicked($event)"></base-chart>
-    </div>
-  </md-card-content>
-</md-card>
