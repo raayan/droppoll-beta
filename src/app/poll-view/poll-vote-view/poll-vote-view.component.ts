@@ -40,7 +40,7 @@ export class PollVoteViewComponent implements OnInit {
     if (document.cookie.indexOf(this.pollID) >= 0){
     } else {
       option.score += 1
-      // this.fbds.votePoll(this.pollID, ind, option, {'total': val});
+      this.fbds.votePoll(this.pollID, ind, option);
       document.cookie += " " + this.pollID;
     }
     this.toResult();

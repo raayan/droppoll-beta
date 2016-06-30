@@ -16,9 +16,8 @@ export class FirebaseDataService {
   getPolls() {
     return this.af.database.list('/polls/');
   }
-  votePoll(id: string, ind: string, option: any, total: any) {
+  votePoll(id: string, ind: string, option: any) {
     this.af.database.object('/polls/' + id + '/options/' + ind).update(option);
-    this.af.database.object('/polls/' + id + '/').update(total);
   }
   setPollResult(id: string) {
     this.currentResult = id;
