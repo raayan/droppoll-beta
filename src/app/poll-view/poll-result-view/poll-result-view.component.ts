@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, ROUTER_DIRECTIVES } from '@angular/router';
 import { FirebaseDataService } from '../../firebase-data.service';
 import { FirebaseObjectObservable } from 'angularfire2';
 import { MdCard, MdCardTitleGroup, MdCardHeader, MD_CARD_DIRECTIVES} from '@angular2-material/card';
@@ -17,10 +17,11 @@ import { MdProgressBar, MD_PROGRESS_BAR_DIRECTIVES } from '@angular2-material/pr
     MdCard, MdCardHeader, MdCardTitleGroup, MD_CARD_DIRECTIVES,
     MdButton, MD_BUTTON_DIRECTIVES,
     MdInput,MdPlaceholder,MD_INPUT_DIRECTIVES,
-    MdProgressBar, MD_PROGRESS_BAR_DIRECTIVES
+    MdProgressBar, MD_PROGRESS_BAR_DIRECTIVES,
     ]
 })
 export class PollResultViewComponent implements OnInit {
+
   poll: FirebaseObjectObservable<any>;
   pollID: string;
   total: number;
@@ -29,6 +30,15 @@ export class PollResultViewComponent implements OnInit {
   ngOnInit() {
     this.total = 0;
     this.pollID = this.fbds.getPollResult();
+    if (this.pollID === undefined) {
+      // janky way to get current pollID
+      this.pollID = location.pathname.replace('/results','').replace('/','');
+    }
+    if (document.cookie.indexOf(this.pollID) === -1) {
+      if (this.pollID !== undefined) {
+        document.cookie =  " " + this.pollID
+      }
+    }
     this.poll = this.fbds.getPoll(this.pollID)
     this.poll.subscribe((snap: any) => {
       if (snap.options !== undefined) {
