@@ -42,8 +42,29 @@ export class PollResultViewComponent implements OnInit {
       }
     });
   }
-  func() {
-    
+  exportCSV() {
+    var dataString = "heyjoheyjoheyjoheyjo";
+    var data = [];
+    var filename = "";
+    this.poll.subscribe((snap: any) => {
+      if (snap.options !== undefined) {
+        filename = snap.name.split(' ').join('') + ".results";
+        for (let obj of snap.options) {
+          data.push([obj.value, obj.score]);
+        }
+        data.push(['Total', this.total]);
+      }
+    });
+    var csvContent = "data:text/csv;charset=utf-8,";
+    data.forEach(function(infoArray, index){
+      dataString = infoArray.join(",");
+      csvContent += index < data.length ? dataString+ "\n" : dataString;
+    });
+    var encodedUri = encodeURI(csvContent);
+    var link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", filename+".csv");
+    document.body.appendChild(link); // Required for FF
+    link.click(); // This will download the data file named "my_data.csv".
   }
-
 }

@@ -8,9 +8,10 @@ import { APP_ROUTER_PROVIDERS } from './app/app.routes';
 import { HTTP_PROVIDERS } from '@angular/http';
 
 import { FIREBASE_PROVIDERS, defaultFirebase, 
-  AuthMethods, 
-  AuthProviders, 
-  firebaseAuthConfig} from 'angularfire2';
+  // AuthMethods, 
+  // AuthProviders, 
+  // firebaseAuthConfig
+} from 'angularfire2';
 
 import { FirebaseDataService } from './app/firebase-data.service';
 
@@ -29,9 +30,8 @@ bootstrap(AppComponent, [
     databaseURL: "https://droppoll-6e9ae.firebaseio.com",
     storageBucket: "droppoll-6e9ae.appspot.com",
   }),
-  firebaseAuthConfig({
-    provider: AuthProviders.Anonymous,
-    method: AuthMethods.Anonymous
-  })
-
+  // firebaseAuthConfig({
+  //   provider: AuthProviders.Anonymous,
+  //   method: AuthMethods.Anonymous
+  // })
 ]);
